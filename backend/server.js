@@ -1,27 +1,28 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const connectDB = require("./config/db");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import habitRoutes from "./routes/habits.js";
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
-// Conectar a MongoDB
+// Conectar DB
 connectDB();
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Ruta de prueba
+// Ruta test
 app.get("/", (req, res) => {
-  res.send("API de hábitos funcionando correctamente");
+  res.send("API funcionando");
 });
 
 // Rutas
-app.use("/api/habits", require("./routes/habits"));
+app.use("/api/habits", habitRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);

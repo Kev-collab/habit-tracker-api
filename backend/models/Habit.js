@@ -1,31 +1,32 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const habitSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
-      trim: true,
     },
-    description: {
+
+    userId: {
       type: String,
-      default: "",
-      trim: true,
+      required: true,
     },
+
     streak: {
       type: Number,
       default: 0,
     },
-    completedToday: {
-      type: Boolean,
-      default: false,
+
+    lastCompleted: {
+      type: Date,
+      default: null,
     },
   },
   {
     timestamps: true,
-    collection: "habits",
   }
 );
 
-module.exports = mongoose.model("Habit", habitSchema);
+const Habit = mongoose.model("Habit", habitSchema);
 
+export default Habit;
