@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function RegisterPage() {
-  const [name, setName] = useState("");
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -12,20 +11,20 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5001/api/auth/register", {
+    const res = await fetch("http://localhost:5001/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await res.json();
 
     if (res.ok) {
       localStorage.setItem("token", data.token);
-      alert("Usuario registrado correctamente");
-      router.push("/login");
+      alert("Login correcto");
+      router.push("/habits");
     } else {
       alert(data.message);
     }
@@ -33,16 +32,9 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <h1>Registro</h1>
+      <h1>Login</h1>
 
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
         <input
           type="email"
           placeholder="Correo"
@@ -57,7 +49,7 @@ export default function RegisterPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">Registrarse</button>
+        <button type="submit">Ingresar</button>
       </form>
     </div>
   );
