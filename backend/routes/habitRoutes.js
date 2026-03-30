@@ -1,4 +1,5 @@
 import express from "express";
+import protect from "../middleware/authMiddleware.js";
 import {
   getHabits,
   createHabit,
@@ -8,12 +9,9 @@ import {
 
 const router = express.Router();
 
-router.get("/", getHabits);
-
-router.post("/", createHabit);
-
-router.put("/complete/:id", completeHabit);
-
-router.delete("/:id", deleteHabit);
+router.get("/", protect, getHabits);
+router.post("/", protect, createHabit);
+router.put("/complete/:id", protect, completeHabit);
+router.delete("/:id", protect, deleteHabit);
 
 export default router;

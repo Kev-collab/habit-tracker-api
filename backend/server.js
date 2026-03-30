@@ -2,27 +2,28 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import habitsRoutes from "./routes/habits.js";
-import authRoutes from "./routes/auth.js";
+
+import authRoutes from "./routes/authRoutes.js";
+import habitRoutes from "./routes/habitRoutes.js";
 
 dotenv.config();
 
-const app = express();
-
-// Conectar a MongoDB
 connectDB();
 
-// Middlewares
+const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-// Ruta de prueba
 app.get("/", (req, res) => {
   res.send("API de hábitos funcionando correctamente");
 });
 
-// Rutas
-app.use("/api/habits", habitsRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/habits", habitRoutes);
 
-export default app;
+const PORT = process.env.PORT || 5001;
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
