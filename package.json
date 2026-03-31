@@ -2,5 +2,41 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.1",
     "tailwindcss": "^4.2.1"
-  }
+  },
+  "name": "habit-tracker-api",
+  "version": "1.0.0",
+  "description": "Proyecto correspondiente al setup inicial de una aplicación web para gestión de hábitos, desarrollado con Express.js y MongoDB Atlas.",
+  "main": "index.js",
+  "dependencies": {
+    "detect-libc": "^2.1.2",
+    "dotenv": "^17.3.1",
+    "enhanced-resolve": "^5.20.0",
+    "express": "^5.2.1",
+    "graceful-fs": "^4.2.11",
+    "jiti": "^2.6.1",
+    "lightningcss": "^1.31.1",
+    "lightningcss-darwin-arm64": "^1.31.1",
+    "magic-string": "^0.30.21",
+    "mongoose": "^9.3.3",
+    "nanoid": "^3.3.11",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.5.8",
+    "source-map-js": "^1.2.1",
+    "tapable": "^2.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kev-collab/habit-tracker-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Kev-collab/habit-tracker-api/issues"
+  },
+  "homepage": "https://github.com/Kev-collab/habit-tracker-api#readme"
 }
